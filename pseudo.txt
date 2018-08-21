@@ -1,0 +1,65 @@
+arr stat1 [health, attack, attackIncrease]
+arr stat2 [health, attack, attackIncrease]
+arr stat3 [health, attack, attackIncrease]
+arr stat4 [health, attack, attackIncrease]
+arr list [arr1, arr2, arr3, arr4]
+arr player []
+arr opp[]
+
+var win
+var loss
+
+===================================================================================
+
+
+func start game
+    reset array values
+    remove player[]
+    remove opp[]
+    display arr list
+
+func select player
+    if onclick = value(!) 
+        player[] = stat![] 
+        display player[] as stat!
+        remove list[!]
+
+func select opp
+    if onclick = value(!) 
+        opp[] = stat![] 
+        display opp[] as stat!
+        remove list[!]
+        opp[1] = opp[1] + opp[2]
+
+func tradeBlows
+    player[1] = player[1] + player[2]
+    player[0] = player[0] - opp[1]
+    opp[0] = opp[0] - player[1]
+
+func onclick
+    tradeBlows
+    
+    if player[0] =< 0
+        lose++
+        start game
+    else if opp[0] =< 0
+        select opp
+    else if list.length = 0
+        winn++
+        start game
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
